@@ -115,3 +115,6 @@ def save_result():
     if file_path:
         with open(file_path, 'w') as file:
             file.write(result)
+
+def show_help():
+    messagebox.showinfo("Help", "Project Documentation:\n\nThis tool allows you to encode and decode data using various encoding types such as base64, hex, rot13, binary, url, morse, and a1z26.\n\nUsage:\n1. Select the operation (encode or decode).\n2. Enter the input data.\n3. Select the encoding type.\n4. Click the 'Execute' button to perform the operation.\n5. View the result in the text area.\n\nYou can also save the result to a text file using the 'Save' option in the File menu.")
