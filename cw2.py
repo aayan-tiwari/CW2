@@ -105,3 +105,13 @@ def execute_operation():
     else:
         output_text.delete('1.0', tk.END)
         output_text.insert(tk.END, "Invalid operation or encoding type.")
+
+def clear_output():
+    output_text.delete('1.0', tk.END)
+
+def save_result():
+    result = output_text.get('1.0', tk.END)
+    file_path = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Text files", "*.txt"), ("All files", "*.*")])
+    if file_path:
+        with open(file_path, 'w') as file:
+            file.write(result)
