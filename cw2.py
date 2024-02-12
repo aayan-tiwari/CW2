@@ -65,3 +65,18 @@ def decode_data(encoded_data, encoding_type):
         return "Error: Unable to decode some characters in the input data"
     except Exception as e:
         return f"Error: {str(e)}"
+    
+def all_operations(operation, data):
+    result = ""
+    for encoding_type in ['base64', 'hex', 'rot13', 'binary', 'url', 'morse', 'a1z26']:
+        try:
+            if operation == 'decode':
+                decoded_data = decode_data(data, encoding_type)
+                if not decoded_data.startswith("Error"):
+                    result += f"{encoding_type.capitalize()} Decoded Data: {decoded_data}\n"
+            elif operation == 'encode':
+                encoded_data = encode_data(data, encoding_type)
+                result += f"{encoding_type.capitalize()} Encoded Data: {encoded_data}\n"
+        except Exception:
+            pass  # If decoding/encoding results in an error, skip to the next method
+    return result
