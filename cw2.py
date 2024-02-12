@@ -80,3 +80,28 @@ def all_operations(operation, data):
         except Exception:
             pass  # If decoding/encoding results in an error, skip to the next method
     return result
+
+def execute_operation():
+    operation = operation_var.get()
+    data = input_data_entry.get()
+    encoding_type = encoding_var.get()
+
+    if operation == 'decode' and encoding_type == 'all':
+        result_data = all_operations(operation, data)
+        output_text.delete('1.0', tk.END)
+        output_text.insert(tk.END, result_data)
+    elif operation == 'encode' and encoding_type == 'all':
+        result_data = all_operations(operation, data)
+        output_text.delete('1.0', tk.END)
+        output_text.insert(tk.END, result_data)
+    elif operation == 'decode':
+        result_data = decode_data(data, encoding_type)
+        output_text.delete('1.0', tk.END)
+        output_text.insert(tk.END, f"Decoded Data: {result_data}")
+    elif operation == 'encode':
+        result_data = encode_data(data, encoding_type)
+        output_text.delete('1.0', tk.END)
+        output_text.insert(tk.END, f"Encoded Data: {result_data}")
+    else:
+        output_text.delete('1.0', tk.END)
+        output_text.insert(tk.END, "Invalid operation or encoding type.")
