@@ -134,3 +134,6 @@ file_menu.add_command(label="Exit", command=root.quit)
 help_menu = tk.Menu(menu_bar, tearoff=False)
 menu_bar.add_cascade(label="Help", menu=help_menu)
 help_menu.add_command(label="Documentation", command=show_help)
+
+input_frame = ttk.Frame(root)
+input_frame.pack(pady=10)
