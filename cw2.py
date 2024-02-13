@@ -144,3 +144,8 @@ operation_label.grid(row=0, column=0, padx=5, pady=5)
 operation_combobox = ttk.Combobox(input_frame, textvariable=operation_var, values=['encode', 'decode'])
 operation_combobox.grid(row=0, column=1, padx=5, pady=5)
 operation_combobox.current(0)
+
+input_data_label = ttk.Label(input_frame, text="Input Data:")
+input_data_label.grid(row=1, column=0, padx=5, pady=5)
+input_data_entry = ttk.Entry(input_frame, width=50)
+input_data_entry.grid(row=1, column=1, padx=5, pady=5)
