@@ -137,3 +137,10 @@ help_menu.add_command(label="Documentation", command=show_help)
 
 input_frame = ttk.Frame(root)
 input_frame.pack(pady=10)
+
+operation_var = tk.StringVar()
+operation_label = ttk.Label(input_frame, text="Operation:")
+operation_label.grid(row=0, column=0, padx=5, pady=5)
+operation_combobox = ttk.Combobox(input_frame, textvariable=operation_var, values=['encode', 'decode'])
+operation_combobox.grid(row=0, column=1, padx=5, pady=5)
+operation_combobox.current(0)
