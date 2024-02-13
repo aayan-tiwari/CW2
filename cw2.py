@@ -130,3 +130,7 @@ menu_bar.add_cascade(label="File", menu=file_menu)
 file_menu.add_command(label="Save", command=save_result)
 file_menu.add_separator()
 file_menu.add_command(label="Exit", command=root.quit)
+
+help_menu = tk.Menu(menu_bar, tearoff=False)
+menu_bar.add_cascade(label="Help", menu=help_menu)
+help_menu.add_command(label="Documentation", command=show_help)
