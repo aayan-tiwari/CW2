@@ -156,3 +156,14 @@ encoding_label.grid(row=2, column=0, padx=5, pady=5)
 encoding_combobox = ttk.Combobox(input_frame, textvariable=encoding_var, values=['base64', 'hex', 'rot13', 'binary', 'url', 'morse', 'a1z26', 'all'])
 encoding_combobox.grid(row=2, column=1, padx=5, pady=5)
 encoding_combobox.current(0)
+
+execute_button = ttk.Button(input_frame, text="Execute", command=execute_operation)
+execute_button.grid(row=3, column=0, columnspan=2, pady=5)
+
+output_text = tk.Text(root, height=35, width=90)
+output_text.pack(pady=10)
+
+clear_button = ttk.Button(root, text="Clear Output", command=clear_output)
+clear_button.pack(pady=5)
+
+root.mainloop()
