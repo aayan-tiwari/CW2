@@ -122,6 +122,9 @@ def show_help():
 root = tk.Tk()
 root.title("Cryptography Tool")
 
+menu_bar = tk.Menu(root)
+root.config(menu=menu_bar)
+
 file_menu = tk.Menu(menu_bar, tearoff=False)
 menu_bar.add_cascade(label="File", menu=file_menu)
 file_menu.add_command(label="Save", command=save_result)
