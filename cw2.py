@@ -66,20 +66,28 @@ def decode_data(encoded_data, encoding_type):
     except Exception as e:
         return f"Error: {str(e)}"
     
+
 def all_operations(operation, data):
-    result = ""
+    results = []
     for encoding_type in ['base64', 'hex', 'rot13', 'binary', 'url', 'morse', 'a1z26']:
         try:
             if operation == 'decode':
                 decoded_data = decode_data(data, encoding_type)
                 if not decoded_data.startswith("Error"):
-                    result += f"{encoding_type.capitalize()} Decoded Data: {decoded_data}\n"
+                    results.append(f"{encoding_type.capitalize()} Decoded Data: {decoded_data}")
             elif operation == 'encode':
                 encoded_data = encode_data(data, encoding_type)
-                result += f"{encoding_type.capitalize()} Encoded Data: {encoded_data}\n"
+                results.append(f"{encoding_type.capitalize()} Encoded Data: {encoded_data}")
         except Exception:
-            pass  # If decoding/encoding results in an error, skip to the next method
-    return result
+            pass
+
+    n = len(results)
+    for i in range(n - 1):
+        for j in range(0, n - i - 1):
+            if results[j] > results[j + 1]:
+                results[j], results[j + 1] = results[j + 1], results[j]
+
+    return results
 
 def execute_operation():
     operation = operation_var.get()
@@ -89,11 +97,13 @@ def execute_operation():
     if operation == 'decode' and encoding_type == 'all':
         result_data = all_operations(operation, data)
         output_text.delete('1.0', tk.END)
-        output_text.insert(tk.END, result_data)
+        for result in result_data:
+            output_text.insert(tk.END, f"{result}\n")
     elif operation == 'encode' and encoding_type == 'all':
         result_data = all_operations(operation, data)
         output_text.delete('1.0', tk.END)
-        output_text.insert(tk.END, result_data)
+        for result in result_data:
+            output_text.insert(tk.END, f"{result}\n")
     elif operation == 'decode':
         result_data = decode_data(data, encoding_type)
         output_text.delete('1.0', tk.END)
